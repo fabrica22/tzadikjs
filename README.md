@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./logo.png" alt="tzadik.js logo" width="160">
+  <img src="./logo.png" alt="tzadik.js logo" width="300">
 </p>
 
 <h1 align="center">tzadik.js</h1>
