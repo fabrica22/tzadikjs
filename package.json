@@ -1,0 +1,21 @@
+{
+  "name": "tzadik-js",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Framework-agnostic web performance runtime, Vite plugin, and reporting tools.",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r --filter './packages/**' build",
+    "test": "vitest run",
+    "typecheck": "pnpm -r --filter './packages/**' typecheck",
+    "dev:example": "pnpm --filter @tzadik/example-vite-basic dev"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "tsup": "^8.5.1",
+    "typescript": "^5.8.3",
+    "vite": "^8.0.12",
+    "vitest": "^4.1.5"
+  },
+  "packageManager": "pnpm@10.33.0"
+}

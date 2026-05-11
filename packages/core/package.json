@@ -1,0 +1,26 @@
+{
+  "name": "@tzadik/core",
+  "version": "0.1.0",
+  "description": "Framework-agnostic runtime performance layer for web apps.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "web-vitals": "^5.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

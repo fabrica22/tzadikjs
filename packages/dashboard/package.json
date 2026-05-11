@@ -1,0 +1,19 @@
+{
+  "name": "@tzadik/dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Placeholder local dashboard package for tzadik.js.",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "vite": "^8.0.12"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

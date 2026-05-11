@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.turbo/
+.vite/
+coverage/
+*.tsbuildinfo
+tzadik-report.html
+tzadik-manifest.json
