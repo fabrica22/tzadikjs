@@ -2,6 +2,7 @@
   "name": "@tzadik/server",
   "version": "0.1.0",
   "description": "Small server-side helpers for receiving tzadik.js RUM events.",
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
@@ -15,6 +16,9 @@
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts",
     "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tzadik/core": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.8.3"

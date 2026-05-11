@@ -2,6 +2,7 @@
   "name": "@tzadik/core",
   "version": "0.1.0",
   "description": "Framework-agnostic runtime performance layer for web apps.",
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": {

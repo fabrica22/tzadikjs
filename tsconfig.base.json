@@ -8,6 +8,11 @@
     "declarationMap": true,
     "sourceMap": true,
     "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@tzadik/core": ["packages/core/src/index.ts"],
+      "@tzadik/vite": ["packages/vite/src/index.ts"]
+    },
     "isolatedModules": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,

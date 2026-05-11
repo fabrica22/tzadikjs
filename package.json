@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Framework-agnostic web performance runtime, Vite plugin, and reporting tools.",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "build": "pnpm -r --filter './packages/**' build",
@@ -12,6 +13,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.17",
+    "jsdom": "^29.1.1",
     "tsup": "^8.5.1",
     "typescript": "^5.8.3",
     "vite": "^8.0.12",

@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  color: #18212f;
+  background: #f6f8fb;
+}
+
+.shell {
+  max-width: 760px;
+  margin: 48px auto;
+  padding: 0 24px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+p {
+  color: #4c5a69;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 24px 0;
+}
+
+button,
+a {
+  border: 1px solid #bdc7d4;
+  border-radius: 6px;
+  padding: 9px 12px;
+  color: #18212f;
+  background: white;
+  text-decoration: none;
+}
+
+pre {
+  min-height: 80px;
+  padding: 16px;
+  border: 1px solid #d8dee7;
+  border-radius: 8px;
+  background: white;
+}
