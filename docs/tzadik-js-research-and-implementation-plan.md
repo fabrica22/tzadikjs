@@ -661,9 +661,9 @@ tzadik.init({
 
 ```ts
 // tzadik.config.ts
-import { defineTzadikConfig } from '@tzadik/core';
+import { definetzadikConfig } from '@tzadik/core';
 
-export default defineTzadikConfig({
+export default definetzadikConfig({
   app: {
     name: 'my-app',
     environment: process.env.NODE_ENV,
@@ -745,7 +745,7 @@ Use:
 Output event shape:
 
 ```ts
-type TzadikMetric = {
+type tzadikMetric = {
   name: 'LCP' | 'CLS' | 'INP' | 'FCP' | 'TTFB' | 'LONG_TASK' | 'RESOURCE';
   value: number;
   rating?: 'good' | 'needs-improvement' | 'poor';

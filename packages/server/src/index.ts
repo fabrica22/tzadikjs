@@ -1,14 +1,14 @@
-import type { TzadikReportPayload } from '@tzadik/core';
+import type { tzadikReportPayload } from '@tzadik/core';
 
 export type RumStore = {
-  save(payload: TzadikReportPayload): Promise<void> | void;
+  save(payload: tzadikReportPayload): Promise<void> | void;
 };
 
 export type RequestLike = {
   json(): Promise<unknown>;
 };
 
-export async function readTzadikPayload(request: RequestLike): Promise<TzadikReportPayload> {
+export async function readtzadikPayload(request: RequestLike): Promise<tzadikReportPayload> {
   const payload = await request.json();
 
   if (!isPayload(payload)) {
@@ -18,8 +18,8 @@ export async function readTzadikPayload(request: RequestLike): Promise<TzadikRep
   return payload;
 }
 
-export function createMemoryStore(): RumStore & { entries: TzadikReportPayload[] } {
-  const entries: TzadikReportPayload[] = [];
+export function createMemoryStore(): RumStore & { entries: tzadikReportPayload[] } {
+  const entries: tzadikReportPayload[] = [];
 
   return {
     entries,
@@ -29,11 +29,11 @@ export function createMemoryStore(): RumStore & { entries: TzadikReportPayload[]
   };
 }
 
-function isPayload(payload: unknown): payload is TzadikReportPayload {
+function isPayload(payload: unknown): payload is tzadikReportPayload {
   if (!payload || typeof payload !== 'object') {
     return false;
   }
 
-  const candidate = payload as Partial<TzadikReportPayload>;
+  const candidate = payload as Partial<tzadikReportPayload>;
   return typeof candidate.app === 'string' && typeof candidate.sessionId === 'string' && Array.isArray(candidate.metrics);
 }

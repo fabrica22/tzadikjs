@@ -1,4 +1,4 @@
-import type { NormalizedTzadikConfig, ScriptDefinition, ScriptStrategy, TzadikMetric } from '../config.js';
+import type { NormalizedtzadikConfig, ScriptDefinition, ScriptStrategy, tzadikMetric } from '../config.js';
 import { currentRoute, isBrowser, now } from '../env.js';
 import { idle } from '../scheduler/idle.js';
 
@@ -9,7 +9,7 @@ export type ScriptLoadResult = {
   error?: unknown;
 };
 
-export type ScriptMetricSink = (metric: TzadikMetric) => void;
+export type ScriptMetricSink = (metric: tzadikMetric) => void;
 
 export type ScriptRegistry = {
   register(script: ScriptDefinition): Promise<ScriptLoadResult>;
@@ -18,7 +18,7 @@ export type ScriptRegistry = {
 
 const loadedScripts = new Set<string>();
 
-export function createScriptRegistry(config: NormalizedTzadikConfig, sink: ScriptMetricSink): ScriptRegistry {
+export function createScriptRegistry(config: NormalizedtzadikConfig, sink: ScriptMetricSink): ScriptRegistry {
   const load = (script: ScriptDefinition): Promise<ScriptLoadResult> => loadScript(script, sink);
 
   return {
@@ -30,7 +30,7 @@ export function createScriptRegistry(config: NormalizedTzadikConfig, sink: Scrip
   };
 }
 
-export function startRegisteredScripts(config: NormalizedTzadikConfig, registry: ScriptRegistry): void {
+export function startRegisteredScripts(config: NormalizedtzadikConfig, registry: ScriptRegistry): void {
   if (!config.scripts.enabled || !isBrowser()) {
     return;
   }
@@ -111,7 +111,7 @@ async function loadScript(script: ScriptDefinition, sink: ScriptMetricSink): Pro
   });
 }
 
-function scriptMetric(script: ScriptDefinition, duration: number, rating: TzadikMetric['rating']): TzadikMetric {
+function scriptMetric(script: ScriptDefinition, duration: number, rating: tzadikMetric['rating']): tzadikMetric {
   return {
     name: 'SCRIPT',
     value: duration,

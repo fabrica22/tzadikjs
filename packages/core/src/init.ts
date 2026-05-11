@@ -1,4 +1,4 @@
-import type { NormalizedTzadikConfig, ScriptDefinition, TzadikConfig, TzadikMetric } from './config.js';
+import type { NormalizedtzadikConfig, ScriptDefinition, tzadikConfig, tzadikMetric } from './config.js';
 import { normalizeConfig } from './config.js';
 import { createDevLogger } from './devtools/logger.js';
 import { startMetrics } from './metrics/index.js';
@@ -7,13 +7,13 @@ import { createReporter, type Reporter } from './reporting/queue.js';
 import { chunk, idle, task, yieldToMain } from './scheduler/index.js';
 import { createScriptRegistry, startRegisteredScripts, type ScriptRegistry } from './scripts/index.js';
 
-export type TzadikInstance = {
-  config: NormalizedTzadikConfig;
+export type tzadikInstance = {
+  config: NormalizedtzadikConfig;
   reporter: Reporter;
   scripts: ScriptRegistry;
   navigation: NavigationController;
-  init(config?: TzadikConfig): TzadikInstance;
-  emit(metric: TzadikMetric): void;
+  init(config?: tzadikConfig): tzadikInstance;
+  emit(metric: tzadikMetric): void;
   registerScript(script: ScriptDefinition): Promise<unknown>;
   yield: typeof yieldToMain;
   yieldToMain: typeof yieldToMain;
@@ -22,14 +22,14 @@ export type TzadikInstance = {
   idle: typeof idle;
 };
 
-let activeInstance: TzadikInstance | undefined;
+let activeInstance: tzadikInstance | undefined;
 
-export function init(config: TzadikConfig = {}): TzadikInstance {
+export function init(config: tzadikConfig = {}): tzadikInstance {
   const normalized = normalizeConfig(config);
   const reporter = createReporter(normalized);
   const logMetric = createDevLogger(normalized);
 
-  const emit = (metric: TzadikMetric): void => {
+  const emit = (metric: tzadikMetric): void => {
     reporter.push(metric);
     logMetric(metric);
   };
@@ -59,11 +59,11 @@ export function init(config: TzadikConfig = {}): TzadikInstance {
   return activeInstance;
 }
 
-export function getActiveInstance(): TzadikInstance | undefined {
+export function getActiveInstance(): tzadikInstance | undefined {
   return activeInstance;
 }
 
-export const tzadik: TzadikInstance = {
+export const tzadik: tzadikInstance = {
   get config() {
     return ensureInstance().config;
   },
@@ -90,7 +90,7 @@ export const tzadik: TzadikInstance = {
   idle,
 };
 
-function ensureInstance(): TzadikInstance {
+function ensureInstance(): tzadikInstance {
   if (!activeInstance) {
     return init();
   }

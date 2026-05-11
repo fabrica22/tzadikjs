@@ -1,14 +1,14 @@
-import type { NormalizedTzadikConfig, TzadikMetric, TzadikReportPayload } from '../config.js';
+import type { NormalizedtzadikConfig, tzadikMetric, tzadikReportPayload } from '../config.js';
 import { currentRoute, isBrowser } from '../env.js';
 
 export type Reporter = {
-  push(metric: TzadikMetric): void;
+  push(metric: tzadikMetric): void;
   flush(): Promise<void>;
-  snapshot(): TzadikMetric[];
+  snapshot(): tzadikMetric[];
 };
 
-export function createReporter(config: NormalizedTzadikConfig): Reporter {
-  const queue: TzadikMetric[] = [];
+export function createReporter(config: NormalizedtzadikConfig): Reporter {
+  const queue: tzadikMetric[] = [];
   let flushing = false;
 
   const flush = async (): Promise<void> => {
@@ -18,7 +18,7 @@ export function createReporter(config: NormalizedTzadikConfig): Reporter {
 
     flushing = true;
     const metrics = queue.splice(0, queue.length);
-    const payload: TzadikReportPayload = {
+    const payload: tzadikReportPayload = {
       app: config.appName,
       sessionId: config.reporting.sessionId,
       route: currentRoute(),

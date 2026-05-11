@@ -1,6 +1,6 @@
-import type { NormalizedTzadikConfig, TzadikMetric } from '../config.js';
+import type { NormalizedtzadikConfig, tzadikMetric } from '../config.js';
 
-export function createDevLogger(config: NormalizedTzadikConfig): (metric: TzadikMetric) => void {
+export function createDevLogger(config: NormalizedtzadikConfig): (metric: tzadikMetric) => void {
   return (metric) => {
     if (!config.devtools.consoleHints || typeof console === 'undefined') {
       return;

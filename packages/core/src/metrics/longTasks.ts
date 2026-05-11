@@ -1,8 +1,8 @@
-import type { NormalizedTzadikConfig, TzadikMetric } from '../config.js';
+import type { NormalizedtzadikConfig, tzadikMetric } from '../config.js';
 import { currentRoute, getConnectionInfo, getDeviceInfo, isBrowser } from '../env.js';
 import type { MetricSink } from './webVitals.js';
 
-export function observeLongTasks(config: NormalizedTzadikConfig, sink: MetricSink): void {
+export function observeLongTasks(config: NormalizedtzadikConfig, sink: MetricSink): void {
   if (!isBrowser() || !config.metrics.longTasks || typeof PerformanceObserver === 'undefined') {
     return;
   }
@@ -20,7 +20,7 @@ export function observeLongTasks(config: NormalizedTzadikConfig, sink: MetricSin
   }
 }
 
-function toMetric(entry: PerformanceEntry): TzadikMetric {
+function toMetric(entry: PerformanceEntry): tzadikMetric {
   return {
     name: 'LONG_TASK',
     value: entry.duration,

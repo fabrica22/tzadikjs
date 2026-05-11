@@ -193,11 +193,11 @@ Commands:
 Runtime reports use this payload shape:
 
 ```ts
-type TzadikReportPayload = {
+type tzadikReportPayload = {
   app: string;
   sessionId: string;
   route: string;
-  metrics: TzadikMetric[];
+  metrics: tzadikMetric[];
 };
 ```
 

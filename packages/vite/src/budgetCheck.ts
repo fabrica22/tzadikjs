@@ -1,4 +1,4 @@
-import type { TzadikBudgets } from '@tzadik/core';
+import type { tzadikBudgets } from '@tzadik/core';
 
 type BundleItem =
   | {
@@ -13,16 +13,16 @@ type BundleItem =
       source: string | Uint8Array;
     };
 
-export type TzadikBundleAsset = {
+export type tzadikBundleAsset = {
   fileName: string;
   type: 'js' | 'css' | 'asset';
   sizeBytes: number;
   imports?: string[] | undefined;
 };
 
-export type TzadikManifest = {
+export type tzadikManifest = {
   generatedAt: string;
-  assets: TzadikBundleAsset[];
+  assets: tzadikBundleAsset[];
   totals: {
     jsBytes: number;
     cssBytes: number;
@@ -31,14 +31,14 @@ export type TzadikManifest = {
 };
 
 export type BudgetViolation = {
-  budget: keyof TzadikBudgets;
+  budget: keyof tzadikBudgets;
   limit: number;
   actual: number;
   message: string;
 };
 
-export function createManifest(bundle: Record<string, BundleItem>): TzadikManifest {
-  const assets: TzadikBundleAsset[] = [];
+export function createManifest(bundle: Record<string, BundleItem>): tzadikManifest {
+  const assets: tzadikBundleAsset[] = [];
 
   for (const item of Object.values(bundle)) {
     const fileName = item.fileName;
@@ -64,7 +64,7 @@ export function createManifest(bundle: Record<string, BundleItem>): TzadikManife
   };
 }
 
-export function checkBudgets(manifest: TzadikManifest, budgets: TzadikBudgets = {}): BudgetViolation[] {
+export function checkBudgets(manifest: tzadikManifest, budgets: tzadikBudgets = {}): BudgetViolation[] {
   const violations: BudgetViolation[] = [];
 
   if (budgets.jsKb != null) {
@@ -78,7 +78,7 @@ export function checkBudgets(manifest: TzadikManifest, budgets: TzadikBudgets = 
   return violations;
 }
 
-function pushViolation(violations: BudgetViolation[], budget: keyof TzadikBudgets, limit: number, actual: number): void {
+function pushViolation(violations: BudgetViolation[], budget: keyof tzadikBudgets, limit: number, actual: number): void {
   if (actual <= limit) {
     return;
   }
@@ -95,6 +95,6 @@ function bytesToKb(bytes: number): number {
   return bytes / 1024;
 }
 
-function sumByType(assets: TzadikBundleAsset[], type: TzadikBundleAsset['type']): number {
+function sumByType(assets: tzadikBundleAsset[], type: tzadikBundleAsset['type']): number {
   return assets.filter((asset) => asset.type === type).reduce((sum, asset) => sum + asset.sizeBytes, 0);
 }

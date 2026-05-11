@@ -1,15 +1,15 @@
-import type { NavigationConfig, NormalizedTzadikConfig, TzadikMetric } from '../config.js';
+import type { NavigationConfig, NormalizedtzadikConfig, tzadikMetric } from '../config.js';
 import { currentRoute, getConnectionInfo, isBrowser } from '../env.js';
 import { idle } from '../scheduler/idle.js';
 
-export type NavigationMetricSink = (metric: TzadikMetric) => void;
+export type NavigationMetricSink = (metric: tzadikMetric) => void;
 
 export type NavigationController = {
   enable(): void;
   prefetch(url: string): boolean;
 };
 
-export function createNavigation(config: NormalizedTzadikConfig, sink: NavigationMetricSink): NavigationController {
+export function createNavigation(config: NormalizedtzadikConfig, sink: NavigationMetricSink): NavigationController {
   const prefetched = new Set<string>();
   let active = 0;
 

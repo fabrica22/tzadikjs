@@ -1,17 +1,17 @@
 import { onCLS, onFCP, onINP, onLCP, onTTFB, type Metric } from 'web-vitals';
-import type { NormalizedTzadikConfig, TzadikMetric } from '../config.js';
+import type { NormalizedtzadikConfig, tzadikMetric } from '../config.js';
 import { currentRoute, getConnectionInfo, getDeviceInfo, isBrowser } from '../env.js';
 
-export type MetricSink = (metric: TzadikMetric) => void;
+export type MetricSink = (metric: tzadikMetric) => void;
 
-export function observeWebVitals(config: NormalizedTzadikConfig, sink: MetricSink): void {
+export function observeWebVitals(config: NormalizedtzadikConfig, sink: MetricSink): void {
   if (!isBrowser() || !config.metrics.webVitals || Math.random() > config.metrics.sampleRate) {
     return;
   }
 
   const emit = (metric: Metric) => {
     sink({
-      name: metric.name as TzadikMetric['name'],
+      name: metric.name as tzadikMetric['name'],
       value: metric.value,
       rating: metric.rating,
       route: currentRoute(),

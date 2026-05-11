@@ -1,14 +1,14 @@
 import type { Plugin } from 'vite';
-import type { TzadikConfig } from '@tzadik/core';
+import type { tzadikConfig } from '@tzadik/core';
 import { checkBudgets, createManifest } from './budgetCheck.js';
 
-export type TzadikViteOptions = {
-  config?: TzadikConfig;
+export type tzadikViteOptions = {
+  config?: tzadikConfig;
   inject?: boolean;
   failOnBudget?: boolean;
 };
 
-export function tzadikVite(options: TzadikViteOptions = {}): Plugin {
+export function tzadikVite(options: tzadikViteOptions = {}): Plugin {
   const config = options.config ?? {};
   const inject = options.inject ?? true;
   const failOnBudget = options.failOnBudget ?? false;

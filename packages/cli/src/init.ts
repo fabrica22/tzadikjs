@@ -1,9 +1,9 @@
 import { access, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
-const DEFAULT_CONFIG = `import { defineTzadikConfig } from '@tzadik/core';
+const DEFAULT_CONFIG = `import { definetzadikConfig } from '@tzadik/core';
 
-export default defineTzadikConfig({
+export default definetzadikConfig({
   appName: 'my-app',
   metrics: {
     webVitals: true,

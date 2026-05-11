@@ -11,7 +11,7 @@ export type MetricName =
 
 export type MetricRating = 'good' | 'needs-improvement' | 'poor';
 
-export type TzadikMetric = {
+export type tzadikMetric = {
   name: MetricName;
   value: number;
   route: string;
@@ -28,11 +28,11 @@ export type TzadikMetric = {
   } | undefined;
 };
 
-export type TzadikReportPayload = {
+export type tzadikReportPayload = {
   app: string;
   sessionId: string;
   route: string;
-  metrics: TzadikMetric[];
+  metrics: tzadikMetric[];
 };
 
 export type SchedulerPriority = 'user-blocking' | 'user-visible' | 'background';
@@ -58,7 +58,7 @@ export type ScriptDefinition = {
   attrs?: Record<string, string | boolean>;
 };
 
-export type TzadikBudgets = {
+export type tzadikBudgets = {
   jsKb?: number;
   cssKb?: number;
   lcpMs?: number;
@@ -109,7 +109,7 @@ export type DevtoolsConfig = {
   consoleHints?: boolean;
 };
 
-export type TzadikConfig = {
+export type tzadikConfig = {
   appName?: string;
   mode?: 'auto' | 'safe' | 'manual';
   metrics?: boolean | MetricsConfig;
@@ -118,11 +118,11 @@ export type TzadikConfig = {
   navigation?: boolean | NavigationConfig;
   reporting?: ReportingConfig;
   reportTo?: string;
-  budgets?: TzadikBudgets;
+  budgets?: tzadikBudgets;
   devtools?: boolean | DevtoolsConfig;
 };
 
-export type NormalizedTzadikConfig = {
+export type NormalizedtzadikConfig = {
   appName: string;
   mode: 'auto' | 'safe' | 'manual';
   metrics: Required<MetricsConfig>;
@@ -130,15 +130,15 @@ export type NormalizedTzadikConfig = {
   scripts: Required<Omit<ScriptsConfig, 'registry'>> & { registry: ScriptDefinition[] };
   navigation: Required<NavigationConfig>;
   reporting: Required<Omit<ReportingConfig, 'endpoint'>> & { endpoint?: string | undefined };
-  budgets: TzadikBudgets;
+  budgets: tzadikBudgets;
   devtools: Required<DevtoolsConfig>;
 };
 
-export function defineTzadikConfig(config: TzadikConfig): TzadikConfig {
+export function definetzadikConfig(config: tzadikConfig): tzadikConfig {
   return config;
 }
 
-export function normalizeConfig(config: TzadikConfig = {}): NormalizedTzadikConfig {
+export function normalizeConfig(config: tzadikConfig = {}): NormalizedtzadikConfig {
   const metrics = config.metrics === false ? {} : config.metrics === true || config.metrics == null ? { webVitals: true } : config.metrics;
   const scheduler =
     config.scheduler === false ? { enabled: false } : config.scheduler === true || config.scheduler == null ? { enabled: true } : config.scheduler;

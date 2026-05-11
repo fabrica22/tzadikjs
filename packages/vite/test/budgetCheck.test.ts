@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { checkBudgets, type TzadikManifest } from '../src/index.js';
+import { checkBudgets, type tzadikManifest } from '../src/index.js';
 
 describe('checkBudgets', () => {
   it('returns violations when bundle totals exceed limits', () => {
-    const manifest: TzadikManifest = {
+    const manifest: tzadikManifest = {
       generatedAt: new Date(0).toISOString(),
       assets: [],
       totals: {
